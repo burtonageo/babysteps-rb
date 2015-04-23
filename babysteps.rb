@@ -51,13 +51,6 @@ sleep countdown
 # The repository should be unchanged
 
 
-
-#take_baby_steps . 120
-
-#Max(X seconds since the last commit, X seconds since script ran) > 120  -> Revert
-
-
-
 # Get a git directory and number of seconds (= x)
 
 
