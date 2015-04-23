@@ -46,6 +46,10 @@ countdown = ARGV[1].to_i
 sleep countdown
 `git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
 
+
+sleep countdown
+`git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
+
 #> Given
 # A git repo: hello.git
 # A number x
