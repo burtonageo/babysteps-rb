@@ -58,14 +58,18 @@ countdown = ARGV[1].to_i
 
 #seconds_since_last_commit = now - time_of_last_commit
 
-iteration_info_file = "./iteration_info.txt"
+Iteration_info_file = "./iteration_info.txt"
 
 def get_last_iteration()
-    return File.absolute_path(iteration_info_file).read.to_i
+    if !File.exists? Iteration_info_file then
+        File.new Iteration_info_file
+        set_last_iteration 0
+    end
+    return File.open(Iteration_info_file).read.to_i
 end
 
 def set_last_iteration(time)
-    File.open(iteration_info_file).write time
+    File.open(Iteration_info_file).write time
 end
 
 def iterate(countdown)
