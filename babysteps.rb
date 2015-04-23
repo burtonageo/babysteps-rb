@@ -21,7 +21,6 @@
 #> Given:
 # A git repo: hello.git
 #    With uncommitted changes
-#    The last commit is less than X seconds ago from now
 # A number x
 
 #> When n seconds have elapsed since the last commit and n < x:
