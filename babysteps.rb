@@ -3,20 +3,18 @@
 #> Given:
 # A git repo: hello.git
 #     With uncommitted changes
-#     The last commit is less than X seconds ago from now
 # A number x
 
-#> When X seconds have elapsed since the last commit:
+#> When X seconds have elapsed since the script was called
 #> Then all uncommitted changes will be reverted
 
 
 #> Given:
 # A git repo in a different directory: ../otherrepo/hello.git
 #    With uncommitted changes
-#    The last commit is less than X seconds ago from now
 # A number x
 
-#> When X seconds have elapsed since the last commit:
+#> When X seconds have elapsed since the script was called
 #> Then all uncommitted changes will be reverted
 
 
