@@ -22,7 +22,7 @@
 # A number x
 # Last iteration happened 0 seconds ago
 
-#> When the iteration happenes
+#> When the iteration happens
 #> Then the repository will reverted x seconds past start time when I make a change at 1 seconds elapsed.
 
 #> Given:
@@ -30,7 +30,7 @@
 # A number x
 # Last iteration happened x seconds ago
 
-#> When the user starts the script
+#> When the iteration happens
 #> Then the repository will reverted x seconds past start time when I make a change at 1 seconds elapsed.
 
 #> Given:
@@ -38,8 +38,17 @@
 # A number x
 # Last iteration happened 2x seconds ago
 
+#> When the iteration happens
+#> Then the repository will reverted x seconds past start time when I make a change at 1 seconds elapsed.
+
+#> Given:
+# A git repo with no uncommitted changes
+# A number x
+# Last iteration happened INIFINITY seconds ago
+
 #> When the user starts the script
 #> Then the repository will reverted x seconds past start time when I make a change at 1 seconds elapsed.
+
 
 git_repo = ARGV[0]
 countdown = ARGV[1].to_i
