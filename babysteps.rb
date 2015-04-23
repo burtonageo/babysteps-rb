@@ -58,6 +58,11 @@ countdown = ARGV[1].to_i
 
 #seconds_since_last_commit = now - time_of_last_commit
 
+def last_iteration()
+    iteration_info_file = "./iteration_info.txt"
+    return File.absolute_path(iteration_info_file).read.to_i
+end
+
 def revert_after_countdown(repo, num_secs)
     sleep num_secs
     `git --git-dir=#{repo}/.git --work-tree=#{repo} reset --hard HEAD`
