@@ -64,18 +64,27 @@ def get_last_iteration()
     return File.absolute_path(iteration_info_file).read.to_i
 end
 
-def set_last_iteration()
-    File.open(iteration_info_file).write Time.now.to_i
+def set_last_iteration(time)
+    File.open(iteration_info_file).write time
 end
 
-def revert_after_countdown(repo, num_secs)
-    sleep num_secs
-    `git --git-dir=#{repo}/.git --work-tree=#{repo} reset --hard HEAD`
+def iterate(countdown)
+    time_now = Time.now.to_i
+    time_since_last_iteration = get_last_iteration - time_now
+    
+    if time_since_last_iteration > countdown then
+        `git --git-dir=#{repo}/.git --work-tree=#{repo} reset --hard HEAD`
+    end
+            
+    set_last_iteration time_now
+    sleep countdown
 end
 
-revert_after_countdown git_repo, countdown
-revert_after_countdown git_repo, countdown
-revert_after_countdown git_repo, countdown
+
+iterate(countdown)
+iterate(countdown)
+iterate(countdown)
+
 
 #> Given
 # A git repo: hello.git
