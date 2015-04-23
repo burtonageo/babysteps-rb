@@ -60,7 +60,7 @@ countdown = ARGV[1].to_i
 
 iteration_info_file = "./iteration_info.txt"
 
-def last_iteration()
+def get_last_iteration()
     return File.absolute_path(iteration_info_file).read.to_i
 end
 
