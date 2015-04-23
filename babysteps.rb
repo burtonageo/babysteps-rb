@@ -35,6 +35,14 @@
 #> Then the repository will reverted 2x seconds past start time when I make a change at
 #  x + 1 seconds elapsed.
 
+#> Given:
+# A git repo with no uncommitted changes
+# A number x
+
+#> When the user starts the script
+#> Then the repository will reverted x seconds past start time when I make a change at
+#  x + 1 seconds elapsed.
+
 git_repo = ARGV[0]
 countdown = ARGV[1].to_i
 
@@ -43,12 +51,13 @@ countdown = ARGV[1].to_i
 
 #seconds_since_last_commit = now - time_of_last_commit
 
-sleep countdown
-`git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
+def revert_after_countdown(repo, num_secs)
+    sleep num_secs
+    `git --git-dir=#{repo}/.git --work-tree=#{repo} reset --hard HEAD`
+end
 
-
-sleep countdown
-`git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
+revert_after_countdown git_repo, countdown
+revert_after_countdown git_repo, countdown
 
 #> Given
 # A git repo: hello.git
