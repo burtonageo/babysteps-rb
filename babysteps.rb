@@ -6,16 +6,9 @@
 #     The last commit is less than X seconds ago from now
 # A number x
 
-#> When X seconds have elapsed since the last commit and there are uncommitted changes:
-# All uncommitted changes will be reverted
+#> When X seconds have elapsed since the last commit:
+#> Then all uncommitted changes will be reverted
 
-#> Then:
-# There should be no uncommited changes
-
-git_repo = ARGV[0]
-num_seconds = ARGV[1]
-
-`git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
 
 #> Given:
 # A git repo in a different directory: ../otherrepo/hello.git
@@ -23,11 +16,30 @@ num_seconds = ARGV[1]
 #    The last commit is less than X seconds ago from now
 # A number x
 
-#> When X seconds have elapsed since the last commit and there are uncommitted changes:
-# All uncommitted changes will be reverted
+#> When X seconds have elapsed since the last commit:
+#> Then all uncommitted changes will be reverted
 
-#> Then:
-# There should be no uncommited changes
+
+#> Given:
+# A git repo: hello.git
+#    With uncommitted changes
+#    The last commit is less than X seconds ago from now
+# A number x
+
+#> When n seconds have elapsed since the last commit and n < x:
+#> Then the uncommited changed will still be there
+
+
+git_repo = ARGV[0]
+countdown = ARGV[1].to_i
+
+#time_of_last_commit = `git log --pretty=format:%at`.to_i
+#now = Time.now.to_i
+
+#seconds_since_last_commit = now - time_of_last_commit
+
+sleep countdown
+`git --git-dir=#{git_repo}/.git --work-tree=#{git_repo} reset --hard HEAD`
 
 #> Given
 # A git repo: hello.git
