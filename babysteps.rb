@@ -27,6 +27,14 @@
 #> Then the uncommited changed will still be there
 
 
+#> Given:
+# A git repo with no uncommitted changes
+# A number x
+
+#> When the user starts the script
+#> Then the repository will reverted 2x seconds past start time when I make a change at
+#  x + 1 seconds elapsed.
+
 git_repo = ARGV[0]
 countdown = ARGV[1].to_i
 
