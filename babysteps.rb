@@ -58,6 +58,7 @@ end
 
 revert_after_countdown git_repo, countdown
 revert_after_countdown git_repo, countdown
+revert_after_countdown git_repo, countdown
 
 #> Given
 # A git repo: hello.git
